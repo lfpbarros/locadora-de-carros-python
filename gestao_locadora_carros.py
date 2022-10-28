@@ -1,6 +1,5 @@
 import os
 
-# Incluir estrutras de validação de dados
 # Criar a estrutura para quando todos os produtos estiverem alugados.
 # Criar função para exibir as listas
 # Podemos usar o pass nas estruturas
@@ -17,6 +16,7 @@ portifolio = [
     {'Fiat Nobi': 70},
     {'Fiat Pulse': 130}
 ]
+# Poderia ter usado tuplas, teria sido mais fácil haha
 
 alugados = []
 continuar = 0
@@ -30,6 +30,9 @@ while continuar == 0:
 O que você deseja fazer?
 0 - Mostrar portifólio | 1 - Alugar um carro | 2 - Devolver um carro''')
     opcao = int(input())
+    while opcao != 0 or opcao != 1 or opcao != 2:
+        print('As únicas opções disponíveis são 0, 1 e 2')
+        opcao = int(input())
     os.system('cls')
 
     if opcao == 0:
@@ -41,6 +44,9 @@ O que você deseja fazer?
         print('=' * 15)
         print('0 - CONTINUAR | 1 - SAIR')
         home = int(input())
+        while home != 0 or home != 1:
+            print('As únicas opções disponíveis são 0 e 1')
+            home = int(input())
         if home == 0:
             os.system('cls')
             continue
@@ -70,6 +76,9 @@ O que você deseja fazer?
         print('=' * 15)
         print('0 - SIM | 1 - NÃO')
         alugar = int(input())
+        while alugar != 0 or alugar != 1:
+            print('As únicas opções disponíveis são 0 e 1')
+            alugar = int(input())
         if alugar == 0:
             selecionado = portifolio.pop(escolha)
             alugados.append(selecionado)
@@ -77,6 +86,9 @@ O que você deseja fazer?
         print('')
         print('0 - CONTINUAR | 1 - SAIR')
         home = int(input())
+        while home != 0 or home != 1:
+            print('As únicas opções disponíveis são 0 e 1')
+            home = int(input())
         if home == 0:
             os.system('cls')
             continue
@@ -106,6 +118,9 @@ O que você deseja fazer?
         print('=' * 15)
         print('0 - CONTINUAR | 1 - SAIR')
         home = int(input())
+        while home != 0 or home != 1:
+            print('As únicas opções disponíveis são 0 e 1')
+            home = int(input())
         if home == 0:
             os.system('cls')
             continue
