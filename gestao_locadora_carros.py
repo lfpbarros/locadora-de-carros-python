@@ -2,6 +2,10 @@ import os
 
 # Incluir estrutras de validação de dados
 # Criar a estrutura para quando todos os produtos estiverem alugados.
+# Criar função para exibir as listas
+# Podemos usar o pass nas estruturas
+# É possível usar o input no if
+# Biblioteca OS automatiza o terminal
 
 portifolio = [
     {'Chevrolet Tracker': 128},
