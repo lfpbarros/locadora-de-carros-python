@@ -1,10 +1,7 @@
 import os
 
-# Criar a estrutura para quando todos os produtos estiverem alugados.
-# Criar função para exibir as listas
 # Podemos usar o pass nas estruturas
 # É possível usar o input no if
-# Biblioteca OS automatiza o terminal
 
 portifolio = [
     {'Chevrolet Tracker': 128},
@@ -21,6 +18,12 @@ portifolio = [
 alugados = []
 continuar = 0
 
+def mostrar_lista(lista):
+    for idx, i in enumerate(lista):
+        produto = list(i.items())
+        nome, preco = produto[0]
+        print(f'[{idx}] {nome} - R${preco} / dia')
+
 while continuar == 0:
     print('=' * 15)
     print('Bem vindo à locadora de carros!')
@@ -36,10 +39,7 @@ O que você deseja fazer?
     os.system('cls')
 
     if opcao == 0:
-        for idx, i in enumerate(portifolio):
-            produto = list(i.items())
-            nome, preco = produto[0]
-            print(f'[{idx}] {nome} - R${preco} / dia')
+        mostrar_lista(portifolio)
         print('')
         print('=' * 15)
         print('0 - CONTINUAR | 1 - SAIR')
@@ -54,35 +54,39 @@ O que você deseja fazer?
             break
 
     if opcao == 1:
-        print('[ ALUGAR ] Dê uma olhada em nosso portifólio.')
-        print('')
-        for idx, i in enumerate(portifolio):
-            produto = list(i.items())
-            nome, preco = produto[0]
-            print(f'[{idx}] {nome} - R${preco} / dia')
-        print('')
-        print('Escolha o código do carro:')
-        escolha = int(input())
-        escolhido = portifolio[escolha]
-        carro, valor = list(escolhido.items())[0]
-        print('')
-        print('Escolha por quantos dias deseja alugar:')
-        dias = int(input())
+        if len(portifolio) == 0:
+            print('Não há carros a alugar')
+        else:
+            print('[ ALUGAR ] Dê uma olhada em nosso portifólio.')
+            print('')
+            mostrar_lista(portifolio)
+            print('')
+            print('Escolha o código do carro:')
+            escolha = int(input())
+            escolhido = portifolio[escolha]
+            carro, valor = list(escolhido.items())[0]
+            print('')
+            print('Escolha por quantos dias deseja alugar:')
+            dias = int(input())
+            while dias < 1:
+                print('A quantidade de dias deve ser maior que 0')
+                dias = int(input())
 
-        os.system('cls')
-        print(f'Você escolheu {carro} por {dias} dias.')
-        print(f'O aluguel totalizaria R${valor * dias}. Deseja alugar?')
-        print('')
-        print('=' * 15)
-        print('0 - SIM | 1 - NÃO')
-        alugar = int(input())
-        while alugar != 0 and alugar != 1:
-            print('As únicas opções disponíveis são 0 e 1')
+
+            os.system('cls')
+            print(f'Você escolheu {carro} por {dias} dias.')
+            print(f'O aluguel totalizaria R${valor * dias}. Deseja alugar?')
+            print('')
+            print('=' * 15)
+            print('0 - SIM | 1 - NÃO')
             alugar = int(input())
-        if alugar == 0:
-            selecionado = portifolio.pop(escolha)
-            alugados.append(selecionado)
-            print(f'Parabéns! Você alugou o carro {carro} por {dias} dias.')
+            while alugar != 0 and alugar != 1:
+                print('As únicas opções disponíveis são 0 e 1')
+                alugar = int(input())
+            if alugar == 0:
+                selecionado = portifolio.pop(escolha)
+                alugados.append(selecionado)
+                print(f'Parabéns! Você alugou o carro {carro} por {dias} dias.')
         print('')
         print('0 - CONTINUAR | 1 - SAIR')
         home = int(input())
@@ -100,10 +104,7 @@ O que você deseja fazer?
             print('Não há carros a devolver! ')
         else:
             print('Segue a lista de carros alugados. Qual você deseja devolver?')
-            for idx, i in enumerate(alugados):
-                produto = list(i.items())
-                nome, preco = produto[0]
-                print(f'[{idx}] {nome} - R${preco} / dia')
+            mostrar_lista(alugados)
             print('')
             print('=' * 15)
             print('')
